@@ -38,6 +38,19 @@ class LoginController {
             })
             .catch(() => res.json({ error: true }));
     }
+
+    loginWithAdmin(req: Request, res: Response, next: NextFunction) {
+        const userReq = req.body.user;
+        User.findOne({ email: userReq.email })
+            .then((userFind) => {
+                if (userFind?.admin) {
+                    res.json(true);
+                } else {
+                    res.json(false);
+                }
+            })
+            .catch(next);
+    }
 }
 
 export default new LoginController();

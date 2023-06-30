@@ -8,6 +8,7 @@ export interface UserProps extends Document {
     image?: string;
     email: string;
     password?: string;
+    admin?: boolean;
     encryptPassword: (password: string) => string;
     validPassword: (password: string) => boolean;
 }
@@ -18,6 +19,7 @@ const User = new Schema(
         image: { type: String },
         email: { type: String, require: true },
         password: { type: String },
+        admin: { type: Boolean },
     },
     {
         timestamps: true,
