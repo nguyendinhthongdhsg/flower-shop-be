@@ -12,3 +12,4 @@ const Directory = new Schema({
     timestamps: true,
 });
 exports.default = mongoose_1.default.model('Directory', Directory);
+//# sourceMappingURL=Directory.js.map

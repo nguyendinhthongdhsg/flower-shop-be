@@ -24,3 +24,4 @@ app.use(express_1.default.json());
 app.listen(port, () => {
     console.log(`App is listening port localhost:${port}`);
 });
+//# sourceMappingURL=index.js.map

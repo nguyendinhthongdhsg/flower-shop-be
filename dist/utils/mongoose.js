@@ -8,3 +8,4 @@ exports.default = {
         return mongoose ? mongoose.toObject() : mongoose;
     },
 };
+//# sourceMappingURL=mongoose.js.map

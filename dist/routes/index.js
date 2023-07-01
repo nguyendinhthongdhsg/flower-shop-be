@@ -10,3 +10,4 @@ function routes(app) {
     app.use('/directory', directoryRouter_1.default);
 }
 exports.default = routes;
+//# sourceMappingURL=index.js.map

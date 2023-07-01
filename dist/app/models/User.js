@@ -22,3 +22,4 @@ User.methods.validPassword = function (password) {
     return bcrypt_1.default.compareSync(password, this.password);
 };
 exports.default = mongoose_1.default.model('User', User);
+//# sourceMappingURL=User.js.map

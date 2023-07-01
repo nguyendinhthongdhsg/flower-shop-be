@@ -12,3 +12,4 @@ router.post('/loginWithEmail', LoginController_1.default.loginWithEmail);
 router.post('/loginWithAdmin', LoginController_1.default.loginWithAdmin);
 router.post('/register', RegisterController_1.default.post);
 exports.default = router;
+//# sourceMappingURL=userRouter.js.map

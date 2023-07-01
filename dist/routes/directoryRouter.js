@@ -10,3 +10,4 @@ router.post('/', DirectoryController_1.default.post);
 router.get('/', DirectoryController_1.default.get);
 router.delete('/', DirectoryController_1.default.delete);
 exports.default = router;
+//# sourceMappingURL=directoryRouter.js.map
