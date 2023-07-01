@@ -9,10 +9,18 @@ class DirectoryController {
                 if (dirFind?.name) {
                     res.json({ error: 'Danh mục này đã tồn tại' });
                 } else {
-                    const dirDB = new Directory(dirReq);
-                    dirDB
-                        .save()
-                        .then(() => res.json({ success: true }))
+                    Directory.findOne({ id: dirReq.id })
+                        .then((dirFind1) => {
+                            if (dirFind1?.id) {
+                                res.json({ error: 'ID này đã tồn tại' });
+                            } else {
+                                const dirDB = new Directory(dirReq);
+                                dirDB
+                                    .save()
+                                    .then(() => res.json({ success: true }))
+                                    .catch(next);
+                            }
+                        })
                         .catch(next);
                 }
             })
@@ -23,6 +31,14 @@ class DirectoryController {
         Directory.find({})
             .then((dirFind) => res.json(dirFind))
             .catch(next);
+    }
+
+    delete(req: Request, res: Response, next: NextFunction) {
+        Directory.deleteOne({ id: req.body.id })
+            .then(() => {
+                res.json({ success: true });
+            })
+            .catch(() => res.json({ error: true }));
     }
 }
 
