@@ -1,4 +1,5 @@
 import express from 'express';
+import { Request } from 'express';
 import cors from 'cors';
 
 const port = 8000;
@@ -11,7 +12,7 @@ const app = express();
 db.connect();
 
 // cors data
-app.use(cors());
+app.use(cors<Request>());
 
 // Express middleware
 app.use(
