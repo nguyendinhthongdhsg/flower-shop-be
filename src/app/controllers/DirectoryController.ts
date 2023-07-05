@@ -30,7 +30,6 @@ class DirectoryController {
     get(req: Request, res: Response, next: NextFunction) {
         Directory.find({})
             .then((dirFind) => {
-                console.log(dirFind);
                 res.json(dirFind);
             })
             .catch(next);
