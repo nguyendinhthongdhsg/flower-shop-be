@@ -9,6 +9,7 @@ class FlowerController {
             name: req.body.name,
             price: Number(req.body.price),
             id: req.body.id,
+            directory: '',
         };
         if (formReq.id.indexOf(' ') === -1) {
             res.json({
@@ -42,6 +43,7 @@ class FlowerController {
                                     Directory.findOne({ id: checkDir })
                                         .then((dirFind) => {
                                             if (dirFind?.name) {
+                                                formReq.directory = checkDir;
                                                 const formDB = new Flower(formReq);
                                                 const imageDB = new Image(fileReq);
                                                 formDB
@@ -57,7 +59,7 @@ class FlowerController {
                                                     .catch(next);
                                             } else if (!dirFind || !dirFind.name)
                                                 res.json({
-                                                    error: `Danh mục ${checkDir} chưa được khởi tạo`,
+                                                    error: `Danh mục '${checkDir}' chưa được khởi tạo`,
                                                 });
                                         })
                                         .catch(next);
@@ -72,6 +74,12 @@ class FlowerController {
 
     get(req: Request, res: Response, next: NextFunction) {
         Flower.find({})
+            .then((flowerFind) => res.json(flowerFind))
+            .catch(next);
+    }
+
+    getWithDir(req: Request, res: Response, next: NextFunction) {
+        Flower.find({ directory: req.params.slug })
             .then((flowerFind) => res.json(flowerFind))
             .catch(next);
     }

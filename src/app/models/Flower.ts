@@ -5,6 +5,7 @@ interface FlowerProps {
     name: string;
     price: number;
     id: string;
+    directory: string;
 }
 
 const Flower = new Schema(
@@ -12,6 +13,7 @@ const Flower = new Schema(
         name: { type: String, require: true },
         price: { type: Number, require: true },
         id: { type: String, require: true },
+        directory: { type: String, require: true },
     },
     {
         timestamps: true,
