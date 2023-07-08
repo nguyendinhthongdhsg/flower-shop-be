@@ -14,7 +14,7 @@ class CartController {
             .then((cartFind) => {
                 if (cartFind && cartFind.length) {
                     cartFind.length = cartFind.length + 1;
-                    Cart.updateOne({ id: cartFind.id }, cartFind)
+                    Cart.updateOne({ id: cartFind.id, userId: product.userId }, cartFind)
                         .then(() => res.json({ success: true }))
                         .catch(next);
                 } else {
@@ -45,7 +45,7 @@ class CartController {
                     } else if (option === 'decrease') {
                         cartFind.length--;
                     }
-                    Cart.updateOne({ id }, cartFind)
+                    Cart.updateOne({ id, userId }, cartFind)
                         .then(() => {
                             res.json({ success: true });
                         })
@@ -60,7 +60,7 @@ class CartController {
             .then(() => {
                 res.json({ success: true });
             })
-            .catch(() => res.json({ error: true }));
+            .catch(next);
     }
 }
 
