@@ -10,7 +10,7 @@ class CartController {
 
     post(req: Request, res: Response, next: NextFunction) {
         const product = req.body.product;
-        Cart.findOne({ id: product.flower.id })
+        Cart.findOne({ id: product.flower.id, userId: product.userId })
             .then((cartFind) => {
                 if (cartFind && cartFind.length) {
                     cartFind.length = cartFind.length + 1;
@@ -36,7 +36,8 @@ class CartController {
     put(req: Request, res: Response, next: NextFunction) {
         const id = req.body.id;
         const option = req.body.option;
-        Cart.findOne({ id })
+        const userId = req.body.userId;
+        Cart.findOne({ id, userId })
             .then((cartFind) => {
                 if (cartFind) {
                     if (option === 'increase') {
@@ -55,7 +56,7 @@ class CartController {
     }
 
     delete(req: Request, res: Response, next: NextFunction) {
-        Cart.deleteOne({ id: req.body.id })
+        Cart.deleteOne({ id: req.body.id, userId: req.body.userId })
             .then(() => {
                 res.json({ success: true });
             })
